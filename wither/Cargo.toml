@@ -15,8 +15,8 @@ edition = "2018"
 [dependencies]
 chrono = "0.4"
 log = "0.4"
-mongodb = { version = "2", default-features=false }
-serde = { version = "1", features=["derive"] }
+mongodb = { git = "https://github.com/mongodb/mongo-rust-driver", rev = "c9c4e3f", default-features = false }
+serde = { version = "1", features = ["derive"] }
 wither_derive = { version = "0.9.0", path = "../wither_derive", default-features = false }
 async-trait = "0.1"
 futures = "0.3"
@@ -31,6 +31,18 @@ default = ["tokio-runtime"]
 tokio-runtime = ["mongodb/tokio-runtime"]
 async-std-runtime = ["mongodb/async-std-runtime"]
 docinclude = [] # Used only for activating `doc(include="...")` on nightly.
+
+# Enable support for v0.4 of the chrono crate in the public API of the BSON library.
+bson-chrono-0_4 = ["mongodb/bson-chrono-0_4"]
+
+# Enable support for the serde_with crate in the BSON library.
+bson-serde_with = ["mongodb/bson-serde_with"]
+
+# Enable support for v0.8 of the uuid crate in the public API of the BSON library.
+bson-uuid-0_8 = ["mongodb/bson-uuid-0_8"]
+
+# Enable support for v1.x of the uuid crate in the public API of the BSON library.
+bson-uuid-1 = ["mongodb/bson-uuid-1"]
 
 [package.metadata.docs.rs]
 features = ["docinclude"] # Activate `docinclude` during docs.rs build.
